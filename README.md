@@ -1,3 +1,10 @@
+# Instructions to Compile
+
+
+---
+
+
+
 # Umoria
 
 _The Dungeons of Moria_ is a single player dungeon simulation originally
@@ -10,15 +17,14 @@ _Diablo_!
 
 Supported Platforms:
 
-  - Windows
-  - macOS
-  - Linux (Ubuntu/Debian)
+- Windows
+- macOS
+- Linux (Ubuntu/Debian)
 
 Compiling and limited testing done for:
 
-  - NetBSD 8.1 (with gcc 5.5)
-  - Fedora 32
-
+- NetBSD 8.1 (with gcc 5.5)
+- Fedora 32
 
 ## Umoria Restoration Release: v5.7
 
@@ -42,32 +48,33 @@ Due to its lack of Windows and Mac support, Moria was unplayable for many
 people. Hopefully these changes will give more people a chance to play this
 classic roguelike game.
 
-
 ## Notes on Compiling Umoria
 
 At present Umoria has been tested against GCC `7.x`, and `8.1`, with
 `ncurses 6.x`, although recent earlier versions should also work fine. You will
 require these along with `CMake` and the C++ build tools for your system.
 
-
 ### macOS and Linux
 
 Change to the `umoria` game directory and enter the following commands at the
 terminal:
 
-    $ cmake .
-    $ make
+```
+$ cmake .
+$ make
+```
 
 To perform an out-of-source build, type the following:
 
-    $ mkdir build && cd build
-    $ cmake ..
-    $ make
+```
+$ mkdir build && cd build
+$ cmake ..
+$ make
+```
 
 An `umoria` directory will be created in the current directory containing the
 game binary and data files, which can then be moved to any other location, such
 as the `home` directory.
-
 
 ### Windows
 
@@ -82,18 +89,21 @@ need to be specified. This will be either `mingw64` or `mingw32`.
 At the command prompt type the following, being sure to add the correct label
 to `MINGW=`:
 
-    $ MINGW=mingw64 cmake .
-    $ make
+```
+$ MINGW=mingw64 cmake .
+$ make
+```
 
 To perform an out-of-source build, type the following:
 
-    $ mkdir build
-    $ cd build
-    $ MINGW=mingw64 cmake ..
-    $ make
+```
+$ mkdir build
+$ cd build
+$ MINGW=mingw64 cmake ..
+$ make
+```
 
 As with the macOS/Linux builds, the files will be installed into an `umoria` directory.
-
 
 ## Historical Documents
 
@@ -109,14 +119,12 @@ There is also the original Moria Manual and FAQ. Although these are a little
 outdated now, they are certainly worth reading as they contain a lot of
 interesting and useful information.
 
-
 ## Code of Conduct and Contributions
 
 See here for details on our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 For details on how to contribute to the Umoria project, please read our
 [contributing](CONTRIBUTING.md) guide.
-
 
 ## License Information
 
