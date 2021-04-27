@@ -61,7 +61,7 @@ def get_paths():
 
 
 def move_necessary_files():
-    chdir('../umoria/')
+    chdir('./umoria/')
 
     if (not path.exists('./Debug/data')):
         move('./data/', './Debug/')
@@ -98,8 +98,10 @@ def compile():
     print('Building Compile Makefile')
     print()
 
+    chdir('../')
+
     status, result = subprocess.getstatusoutput(
-        "cmake -DCURSES_LIBRARY=\"%CURSES_LIBRARY%\" -DCURSES_INCLUDE_PATH=\"%CURSES_INCLUDE_PATH%\" -G \"Visual Studio 16 2019\" -A Win32 ../")
+        "cmake -DCURSES_LIBRARY=\"%CURSES_LIBRARY%\" -DCURSES_INCLUDE_PATH=\"%CURSES_INCLUDE_PATH%\" -G \"Visual Studio 16 2019\" -A Win32 .")
 
     if(status == 1):
         print('Makefile compilation failed')
@@ -108,7 +110,7 @@ def compile():
     print('Makefile built ...')
     print('Compiling code ...')
 
-    status, result = subprocess.getstatusoutput("cmake --build ../")
+    status, result = subprocess.getstatusoutput("cmake --build .")
 
     if (status == 0):
         print('Compile complete')
@@ -120,6 +122,8 @@ def compile():
     move_necessary_files()
 
     fin = open('root_dir', 'w')
+
+    print(path.abspath('../'))
 
     fin.write(path.abspath('../'))
 
