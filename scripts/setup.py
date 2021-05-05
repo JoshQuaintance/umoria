@@ -26,9 +26,10 @@ def setup():
     print('')
 
     system(
-        "@\"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command \"[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\'))\" && SET \"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\""
+        "start \"CHOCO INSTALL\" /wait powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command \"s[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\'))\" && SET \"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\""
     )
-
+	
+    system('refreshenv')
     print('Chocolatey installed ...')
     print()
 
@@ -36,20 +37,22 @@ def setup():
 
     print('Installing mingw (gcc and g++ compilers)')
     print()
-    system("choco install mingw")
+    system("start \"Install MINGW\" /wait choco install mingw")
 
+    system('refreshenv')
     print('MingW installed ...')
 
     print()
     print('Installing CMake')
-    system("choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'")
+    system("start \"Install CMake\" /wait choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'")
 
+    system('refreshenv')
     print("Cmake Installed")
 
     print()
     print('Installing git ...')
 
-    system("choco install git")
+    system("start \"Install git\" /wait choco install git")
     print('Git installed')
 
     system("refreshenv")
