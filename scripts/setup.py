@@ -78,7 +78,7 @@ def setup():
     input('Press [Enter] to continue ...')
 
     chdir('../')
-    system('start "umoria.sln"')
+    system('start umoria.sln')
 
     input('Press [Enter] to exit ...')
 
