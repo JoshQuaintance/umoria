@@ -51,17 +51,32 @@ def setup():
     system("choco install git")
     print('Git installed')
 
+    system("refreshenv")
+
     print('Cloning modified umoria source code ...')
     system("git clone https://github.com/JoshuaPelealu/umoria")
 
-    system("refreshenv")
-
     print('Setup done')
 
-    print('Run "cd umoria/scripts" and run the "run.exe" script')
+    chdir('./umoria/scripts')
+
+    system('explorer .')
+
+    system('README.txt')
+
+    print('Running first time compile.')
+
+    system('compile.exe')
+
+    print('PLEASE READ THE README.TXT THAT IS ALREADY OPEN FIRST.')
+    input('Press [Enter] to continue ...')
+
+    chdir('../')
+    system('umoria.sln')
 
     input('Press [Enter] to exit ...')
 
 
 if __name__ == "__main__":
+
     setup()

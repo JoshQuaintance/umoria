@@ -12,5 +12,3 @@ CD umoria
 CD Debug
 
 umoria.exe
-
-pause
