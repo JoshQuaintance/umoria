@@ -57,6 +57,5 @@ umoria
 
 compile_commands.json
 *.gz
-*.zip
 
 .DS_Store
