@@ -2,6 +2,7 @@ from os import chdir, system
 import os
 import ctypes
 from time import sleep
+from shutil import move
 
 
 def isAdmin():
@@ -58,21 +59,26 @@ def setup():
 
     print('Setup done')
 
-    chdir('./umoria/scripts')
+    chdir('./umoria')
+
+    system("powershell.exe -NoP -NonI -Command \"Expand-Archive '.\\PDCurses-3.8.zip' '.\\unzipped'")
+    move('./unzipped/PDCurses-3.8', './PDCurses-3.8')
+
+    chdir('./scripts')
 
     system('explorer .')
 
-    system('README.txt')
+    system('start README.txt')
 
     print('Running first time compile.')
 
-    system('compile.exe')
+    system('start compile.exe')
 
     print('PLEASE READ THE README.TXT THAT IS ALREADY OPEN FIRST.')
     input('Press [Enter] to continue ...')
 
     chdir('../')
-    system('umoria.sln')
+    system('start "umoria.sln"')
 
     input('Press [Enter] to exit ...')
 
