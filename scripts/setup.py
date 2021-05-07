@@ -3,6 +3,7 @@ import os
 import ctypes
 from time import sleep
 from shutil import move
+import subprocess
 
 
 def isAdmin():
@@ -26,10 +27,21 @@ def setup():
     print('')
 
     system(
-        "start \"CHOCO INSTALL\" /wait powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command \"s[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\'))\" && SET \"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\""
+        "start \"CHOCO INSTALL\" /wait powershell.exe -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command \"[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\'))\" && SET \"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\""
     )
-	
+
+    sleep(1)
+    status, result = subprocess.getstatusoutput("refreshenv")
+
+    if (status == 1):
+        print('There is an issue with refreshenv.')
+        print('I cannot control this.')
+        print('The only thing you can do is run the script again')
+        input('Press [Enter] to exit ...')
+        exit()
+
     system('refreshenv')
+
     print('Chocolatey installed ...')
     print()
 
@@ -39,6 +51,7 @@ def setup():
     print()
     system("start \"Install MINGW\" /wait choco install mingw")
 
+    sleep(1)
     system('refreshenv')
     print('MingW installed ...')
 
@@ -46,6 +59,7 @@ def setup():
     print('Installing CMake')
     system("start \"Install CMake\" /wait choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'")
 
+    sleep(1)
     system('refreshenv')
     print("Cmake Installed")
 
@@ -55,10 +69,20 @@ def setup():
     system("start \"Install git\" /wait choco install git")
     print('Git installed')
 
-    system("refreshenv")
+    print('Checking if git command works yet or not ...')
+    sleep(1)
+
+    status, result = subprocess.getstatusoutput("git --version")
+
+    if status == 1:
+        print('It seems like the git command isn\'t working yet.')
+        print('I give up already and just not fix this error')
+        print('What you can do is just literally run this script again')
+        input('Press [Enter] to exit ...')
+        exit()
 
     print('Cloning modified umoria source code ...')
-    system("git clone https://github.com/JoshuaPelealu/umoria")
+    system("start /wait git clone https://github.com/JoshuaPelealu/umoria")
 
     print('Setup done')
 
@@ -71,11 +95,11 @@ def setup():
 
     system('explorer .')
 
-    system('start README.txt')
-
     print('Running first time compile.')
 
     system('start compile.exe')
+
+    system('start README.txt')
 
     print('PLEASE READ THE README.TXT THAT IS ALREADY OPEN FIRST.')
     input('Press [Enter] to continue ...')
@@ -87,5 +111,4 @@ def setup():
 
 
 if __name__ == "__main__":
-
     setup()
