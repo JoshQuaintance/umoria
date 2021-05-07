@@ -99,7 +99,7 @@ def setup():
 
     system('start compile.exe')
 
-    system('start README.txt')
+    system('start README.md')
 
     print('PLEASE READ THE README.TXT THAT IS ALREADY OPEN FIRST.')
     input('Press [Enter] to continue ...')
