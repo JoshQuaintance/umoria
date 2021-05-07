@@ -14,7 +14,11 @@ the main script will now prompt 'Press [Enter] to continue....'. Before pressing
 
 ## Editing
 
-Anyways, after you press the [Enter] key after the first time compile is done, it should open up Visual Studio to the umoria project for you. 
+Anyways, after you press the [Enter] key after the first time compile is done, 
+it should open up Visual Studio to the umoria project for you. 
+When Visual Studio is Open, on your solution explorer, you will see 3 things:
+ALL_BUILD, umoria, and ZERO_CHECK. You can ignore the ALL_BUILD and ZERO_CHECK.
+Click on the little triangle beside umoria and it should show you the source code.
 This is where you can edit the source code. *\*Hint\**: The file 'game_run.cpp' is where it all begins....
 
 #### Other Editors
