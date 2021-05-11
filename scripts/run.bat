@@ -11,4 +11,6 @@ FOR /F "tokens=* delims=" %%x in (root_dir) DO cd %%x
 CD umoria
 CD Debug
 
-umoria.exe
+start /wait umoria.exe
+
+pause

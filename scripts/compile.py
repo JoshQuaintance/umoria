@@ -38,6 +38,14 @@ def check():
         input('Press [Enter] to exit ...')
         exit()
 
+    status, result = subprocess.getstatusoutput("cmake --version")
+
+    if (status == 1):
+        print('cmake is not installed yet ...')
+        print('Please run the \'setup.exe\' first')
+        input('Press [Enter] to exit ...')
+        exit()
+
     print('Check done ...')
     return
 
